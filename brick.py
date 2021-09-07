@@ -5,7 +5,9 @@ wall = [
     [4, 1],
     [2, 1, 1, 1],
 ]
-def func(_wall):
+
+
+def brick_wall(_wall):
     _dict = {}
     max_val = 0
     for row in _wall:
@@ -18,4 +20,4 @@ def func(_wall):
                 _dict[_sum] = 1
             max_val = max(_dict.values())
     return len(_wall) - max_val
-print(func(wall))
+#print(func(wall))

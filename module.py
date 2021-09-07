@@ -1,4 +1,6 @@
 import sys
+import info
+import brick
 
 name = open("profile.txt", "r")
 print("Hello" + " ", name.readline())
@@ -7,7 +9,7 @@ print("You can quit by 'q'")
 print("Call the 'brick_wall' function by 1")
 print("Call the function with data and keys by 2")
 print("Call the sorting function by 3")
-rename = input("if it is not your name Enter 'an': ")
+rename = input("if it is not your name enter 'an', else another symbol: ")
 
 
 try:
@@ -33,39 +35,12 @@ wall = [
 ]
 
 
-def brick_wall(_wall):
-    _dict = {}
-    max_val = 0
-    for row in _wall:
-        _sum = 0
-        for brick in row[:-1]:
-            _sum += brick
-            if _sum in _dict:
-                _dict[_sum] += 1
-            else:
-                _dict[_sum] = 1
-            max_val = max(_dict.values())
-    return len(_wall) - max_val
-
-
 data = [
     {"name": "Danil", "lastname": "Pohrebniak", "age": 18},
     {"name": "Danil", "lastname": "Pohrebniak", "age": 18},
     {"name": "Danil", "lastname": "Ivanov", "age": 19}
 ]
 keys = ["name", "lastname"]
-
-
-def func(first, second):
-    elem = []
-    temp = []
-    for _dict in first:
-        values = [value for key, value in _dict.items() if key in second]
-        if values not in elem:
-            elem.append(values)
-            temp.append(_dict)
-
-    return temp
 
 
 def sorting_func(_list):
@@ -86,10 +61,10 @@ while True:
     if enter == "q":
         break
     elif enter == "1":
-        print(brick_wall(wall))
+        print(brick.brick_wall(wall))
         continue
     elif enter == "2":
-        print(func(data, keys))
+        print(info.func(data, keys))
         continue
     elif enter == "3":
         nums = list(map(int, input("Enter the list of numbers: ")))
